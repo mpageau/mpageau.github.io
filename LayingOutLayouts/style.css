@@ -61,4 +61,32 @@ section {
     padding: 100px;
     height: 600px;
 }
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    background-color: pink;
+    height: 400px;
+}
+.flex-item {
+    flex: 1;
+    background-color: rgb(205, 144, 205);
+    margin: 10px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+.nested-flex-container{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(201, 83, 146);
+    padding: 10px;
+}
+.nested-flex-item {
+    background-color: lightblue;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    margin: 5px;
+}
 </style>
