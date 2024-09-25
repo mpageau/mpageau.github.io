@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,14 +29,36 @@
             </div>
             <div class="flex-item">Item 3</div>
             </div>
+            <p>The <b>Flexbox Layout</b> makes it easy to design flexible responsive layout structures without using float or positioning.</p>
     </section>
     <section id="grid">
         <h1>grid</h1>
         <p>grid example.</p>
+        <div class="grid-container">
+            <div class="grid-item grid-item-1">Item 1 (Spans 2 colums)</div>
+            <div class="grid-item grid-item-2">Item 2 (Spans 2 rows)</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item">Item 6</div>
+        </div>
+        <p>The <b>Grid Layout</b> offeres a grid-based layout system with rows and colums, making it easy to design webpages.</p>
     </section>
     <section id="float">
         <h1>float</h1>
         <p>float example.</p>
+        <div class="clearfix">
+            <div class="float-left">this is a left-floating element.</div>
+            <div class="float-right">this is a right-floating element.</div>
+        </div>
+        <p>
+            This paragraph wraps around the floating elements. You can see that the text flows around the boxes that are floated left and right.
+            The float property is used for text wrapping around images or other content, but it has been replaced by modern layout systems like Flexbox and Grid.
+        </p>
+        <p>The <b>clear</b> property specifies what elements can float beside the cleared element and on which side.</p>
     </section>
 </body>
+<footer>
+    <p>COMM 636 Fall 2024. Mallaury Pageau.</p>
+</footer>
 </html>
