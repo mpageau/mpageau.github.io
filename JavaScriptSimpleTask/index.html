@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>To-Do List</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter new task...">
+        <button id="addTaskButton">Add Task</button>
+
+        <ul id="taskList">
+
+        </ul>
+        <div class="progress">
+            Progress: <span id="taskProgress">0</span> task completed 
+        </div>
+    </body>
+    <script> //used chatgpt for this section for help 
+        const taskInput = document.getElementById('taskInput');
+        const addTaskButton = document.getElementById('addTaskButton');
+        const taskList = document.getElementById('taskList');
+        const taskProgress = document.getElementById('taskProgress')
+
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function loadTasks () {
+            taskList.innerHTML = '';
+            tasks.forEach ((task, index) => {
+                createTaskElement(task.text, task.completed, index);
+            });
+            updateProgress();
+        }
+        addTaskButton.addEventListener('click', () => {
+            const taskText = taskInput.value.trim();
+            if (taskText === '') return;
+            tasks.push({ text: taskText, completed: false });
+            saveTasks();
+            createTaskElement(taskText, false, tasks.length - 1);
+            taskInput.value = ''; 
+        });
+
+
+        function createTaskElement(text, completed, index) {
+            const li = document.createElement('li');
+            if (completed) li.classList.add('completed');
+
+            li.innerHTML = `
+                <span>${text}</span>
+                <div>
+                    <input type="checkbox" ${completed ? 'checked' : ''} class="complete-task">
+                    <button class="delete">Delete</button>
+                </div>
+            `;
+
+            
+            li.querySelector('.complete-task').addEventListener('change', (e) => {
+                tasks[index].completed = e.target.checked;
+                saveTasks();
+                if (e.target.checked) {
+                    li.classList.add('completed');
+                } else {
+                    li.classList.remove('completed');
+                }
+                updateProgress();
+            });
+
+            li.querySelector('.delete').addEventListener('click', () => {
+                tasks.splice(index, 1);
+                saveTasks();
+                loadTasks();
+            });
+
+            taskList.appendChild(li);
+        }
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function updateProgress() {
+            const completedTasks = tasks.filter(task => task.completed).length;
+            taskProgress.textContent = `${completedTasks}/${tasks.length}`;
+        }
+
+        loadTasks();
+    </script>
+     <footer>
+        <p>COMM 636 Fall 2024. Mallaury Pageau.</p>
+    </footer>
+    </html>

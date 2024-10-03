@@ -1,0 +1,65 @@
+<style>
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+   
+    h1 {
+        text-align: center;
+        text-decoration: underline;
+        text-decoration-color: #5cb85c;
+        text-decoration-style: wavy;
+    }
+   
+    #taskInput {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+   
+    #addTaskButton {
+        padding: 10px;
+        width: 100%;
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+  
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+  
+    li {
+        background-color: white;
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
+    }
+  
+    li.completed {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    .progress {
+        margin-top: 20px;
+    }
+   
+    footer {
+        background-color: #5cb85c;
+        color: white;
+        text-align: center;
+        padding: 3px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
