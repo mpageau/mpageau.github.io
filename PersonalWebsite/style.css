@@ -1,0 +1,66 @@
+<style>
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f0f0f0;
+}
+
+header {
+    background: linear-gradient(135deg, #f24eae, #ebab82, #a5b7f9);
+    color: white;
+    text-align: center;
+    padding: 80px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    margin: 0;
+    animation: fadeIn 1.5s ease-out;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    margin: 20px 0 0;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.image-container {
+    display: flex;
+    gap: 5px;
+}
+
+.image-container a {
+    text-decoration: none;
+    border: 3px solid transparent;
+}
+
+.image-container a img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.image-container a:hover img {
+    transform: scale(1.1);
+    border: 3px solid #e8e8e8;
+}
+</style>

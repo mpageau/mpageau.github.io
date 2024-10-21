@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Gallery</title>
+</head>
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit);
+    gap: 10px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+</style>
+<body>
+    <h1>Photo Gallery</h1>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="Images/20231113_Sports Package_Pageau-4.jpg" alt="Photo 5">
+        </div>
+        <div class="gallery-item">
+            <img src="Images/20230711_Pageau_Photo Story - 7.jpg" alt="Photo 1">
+        </div>
+        <div class="gallery-item">
+            <img src="Images/20231113_Sports Package_Pageau_1.jpg" alt="Photo 4">
+        </div>
+        <div class="gallery-item">
+            <img src="Images/20231002_Pageau_Light&Portrait-3.jpg" alt="Photo 2">
+        </div>
+        <div class="gallery-item">
+            <img src="Images/20231016_Pageau_Feature-4.jpg" alt="Photo 3">
+        </div>
+        <div class="gallery-item">
+            <img src="Images/20231113_Sports Package_Pageau-9.jpg" alt="Photo 6">
+        </div>
+    </div>
+</body>
+</html>
