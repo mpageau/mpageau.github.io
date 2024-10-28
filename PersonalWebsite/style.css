@@ -2,11 +2,11 @@
 body {
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
-    background-color: #f0f0f0;
+    background-color: #a7a0a0;
 }
 
 header {
-    background: linear-gradient(135deg, #f24eae, #ebab82, #a5b7f9);
+    background: linear-gradient(135deg, #b968c7, #f07575, #f6cbcb);
     color: white;
     text-align: center;
     padding: 80px 0;
@@ -43,7 +43,7 @@ p {
 }
 
 .image-container {
-    display: flex;
+    display: flex; 
     gap: 5px;
 }
 
@@ -62,5 +62,8 @@ p {
 .image-container a:hover img {
     transform: scale(1.1);
     border: 3px solid #e8e8e8;
+}
+footer {
+    text-align: center;
 }
 </style>

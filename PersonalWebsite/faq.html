@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+</head>
+<style> 
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: #f8f9fa;
+        padding: 2rem;
+        color: #2d3748;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+    }
+
+    .header p {
+        color: #64748b;
+        font-size: 1.1rem;
+    }
+
+    .header::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        border-radius: 2px;
+    }
+
+    .faq-list {
+        counter-reset: faq-counter;
+    }
+
+    .faq-item {
+        margin-bottom: 2.5rem;
+        position: relative;
+        padding-left: 3rem;
+    }
+
+    .faq-question {
+        font-size: 1.2rem;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .faq-question:hover {
+        color: #6366f1;
+    }
+
+    .faq-question::before {
+        counter-increment: faq-counter;
+        content: counter(faq-counter, decimal-leading-zero);
+        position: absolute;
+        left: -3rem;
+        color: #6366f1;
+        font-size: 1.1rem;
+        font-weight: 600;
+        opacity: 0.8;
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        color: #64748b;
+        line-height: 1.7;
+        position: relative;
+    }
+
+    .faq-answer::before {
+        content: '';
+        position: absolute;
+        left: -2rem;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(to bottom, #6366f1, transparent);
+        opacity: 0.3;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 300px;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+        body {
+            padding: 1rem;
+        }
+
+        .faq-item {
+            padding-left: 2rem;
+        }
+
+        .faq-question::before {
+            left: -2rem;
+            font-size: 1rem;
+        }
+
+        .faq-answer::before {
+            left: -1.5rem;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>MORE ABOUT ME</h1>
+    
+    </div>
+
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-question">Where are you from?</div>
+            <div class="faq-answer">
+        I was originally born in Detroit, MI, but moved to Roanoke Rapids, NC when I was 2-years old and have lived there ever since. Roanoke Rapids is a super tiny town in Northeastern North Carolina with only about 15,000 residents. 
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What are your post-grad plans?</div>
+            <div class="faq-answer">
+        Currently, my plan is to graduate in May and move to Washington, DC to begin a career in public relations. Although I don't have a job (yet), I am hopeful that the recruitment process will be on my side and I will be employed before summer :). 
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Favorite animal?</div>
+            <div class="faq-answer">
+        I am a HUGE animal lover and would love you answer this question by saying "all animals", but if I had to pick one it would definitely be otters. I am also a big fan of farm animals and frequent the Spring Haven Farm here in Chapel Hill to hold the baby goats. 
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Dream job?</div>
+            <div class="faq-answer">
+        In a perfect world, I would be a publicist at Vogue. This feels like such a basic answer, but it has been my dream ever since watching "The Devil Wears Prada" for the first time when I was 10-years old at a sleepover with some of my best friends.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">If you had unlimited money, what would you do?</div>
+            <div class="faq-answer">
+        I would absolutely, 10000% travel to every country in Europe. Well probably all of the countries in the world since I would have unlimited money. Experiencing new cultures and going to new places is one of my favorite parts of traveling. 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
