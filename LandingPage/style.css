@@ -24,7 +24,7 @@ header, footer {
 }
 
 main {
-    font-family: 'Times New Roman', Times, serif; /* try using a google font instead*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif /* try using a google font instead*/
     border: 1px, solid, black;
 }
 

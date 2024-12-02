@@ -29,6 +29,7 @@
         </section>
 
         <div class="categories">
+     
             <div class="category-card">
                 <h3>Housing</h3>
                 <div class="listing">
@@ -69,9 +70,132 @@
                 </div>
             </div>
         </div>
-
+        <style>
+            #map {
+                height: 500px;
+                width: 100%;
+            }
+            @media (max-width: 768px) {
+                #map {
+                    height: 300px;
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-gray-100">
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-center mb-6">Safe Swap Locations</h1>
+            
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="mb-4">
+                        <input 
+                            type="text" 
+                            id="locationSearch" 
+                            placeholder="Enter your address or city" 
+                            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                        <button 
+                            id="searchBtn" 
+                            class="mt-2 w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300"
+                        >
+                            Find Nearby Safe Swap Locations
+                        </button>
+                    </div>
+                    
+                    <div id="map" class="rounded-lg"></div>
+                    
+                    <div id="locationList" class="mt-4 space-y-2"></div>
+                </div>
+            </div>
+        </div>
+   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            function initMap() {
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 37.0902, lng: -95.7129}, 
+                    zoom: 4
+                });
+    
+                const locationSearch = document.getElementById('locationSearch');
+                const searchBtn = document.getElementById('searchBtn');
+                const locationList = document.getElementById('locationList');
+    
+                const safeSwapLocations = [
+                    {
+                        name: "Police Station Safe Swap Zone",
+                        address: "123 Main St, Anytown, USA",
+                        lat: 40.7128,
+                        lng: -74.0060
+                    },
+                    {
+                        name: "Community Center Safe Exchange",
+                        address: "456 Park Ave, Somewhere, USA", 
+                        lat: 34.0522,
+                        lng: -118.2437
+                    },
+                    {
+                        name: "Public Library Safe Meet Point",
+                        address: "789 Oak Rd, Elsewhere, USA",
+                        lat: 41.8781,
+                        lng: -87.6298
+                    }
+                ];
+    
+                safeSwapLocations.forEach(location => {
+                    new google.maps.Marker({
+                        position: {lat: location.lat, lng: location.lng},
+                        map: map,
+                        title: location.name,
+                        icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                    });
+                });
+    
+                searchBtn.addEventListener('click', () => {
+                    const geocoder = new google.maps.Geocoder();
+                    const address = locationSearch.value;
+    
+                    geocoder.geocode({address: address}, (results, status) => {
+                        if (status === 'OK') {
+                            map.setCenter(results[0].geometry.location);
+                            map.setZoom(12);
+    
+                            // Clear previous list
+                            locationList.innerHTML = '';
+    
+                            // Find and display nearby locations
+                            safeSwapLocations.forEach(location => {
+                                const distance = google.maps.geometry.spherical.computeDistanceBetween(
+                                    new google.maps.LatLng(location.lat, location.lng),
+                                    results[0].geometry.location
+                                ) / 1609.34; 
+    
+                                if (distance <= 20) { 
+                                    const locationEl = document.createElement('div');
+                                    locationEl.classList.add('p-3', 'bg-gray-100', 'rounded-lg');
+                                    locationEl.innerHTML = `
+                                        <h3 class="font-bold">${location.name}</h3>
+                                        <p class="text-sm text-gray-600">${location.address}</p>
+                                        <p class="text-sm">Distance: ${distance.toFixed(1)} miles</p>
+                                    `;
+                                    locationList.appendChild(locationEl);
+                                }
+                            });
+                        } else {
+                            alert('Location not found. Please try again.');
+                        }
+                    });
+                });
+            }
+        </script>
+        <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVSSIZk-svi6rZkv-g-yemkgf_eKlTXE&callback=initMap&libraries=geometry">
+        </script>
+    </body>
+    </html>
         <section class="safety-tips">
-            <h2>Safety Tips! 🛡️</h2>
+            <h2>🛡️ Safety Tips! 🛡️</h2>
             <ul> 
                 <li>Always meet in public, well-lit places</li>
                 <li>Bring a friend when meeting someone</li>
@@ -82,10 +206,13 @@
             </ul>
         </section>
     </div>
-
     <footer>
         <p>© 2024 SimpleListings - Making local trading safe and easy</p>
         <p>Emergency: Call 911 | Report Suspicious Activity: 555-0123</p>
     </footer>
 </body>
 </html>
+
+///add example posting and use that for each clickable link 
+///add map to locate the closest safe-swap location 
+///make items twirl down menus 
