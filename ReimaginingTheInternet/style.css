@@ -106,14 +106,16 @@ nav a:hover {
     padding: 1rem;
     border-radius: 8px;
     margin-top: 2rem;
+    text-align: center;
+    
 
 }
 
-.logo {
-    align-items: right;
-    height: 5px;
-    width: auto;
+ul {
+        display: inline-block;
+        text-align: left;
 }
+
 
 .safety-tips h2 {
     color: #e74c3c;
