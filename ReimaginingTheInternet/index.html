@@ -17,7 +17,6 @@
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="#browse">Browse</a>
         <a href="safety.html">Safety</a>
         <a href="about.html">About</a>
         <button class="post-button">Post Listing</button>
@@ -36,94 +35,94 @@
                     <a href="post.html">Studio Apartment for Rent - Downtown</a>
                 </div>
                 <div class="listing">
-                    <a href="#rental">2BR House with Garden - Suburbs</a>
+                    <a href="post.html">2BR House with Garden - Suburbs</a>
                 </div>
                 <div class="listing">
-                    <a href="#rental">Vacation Rental</a>
+                    <a href="post.html">Vacation Rental</a>
                 </div>
                 <div class="listing">
-                    <a href="#rental">Parking/Storage</a>
+                    <a href="post.html">Parking/Storage</a>
                 </div>
                 <div class="listing">
-                    <a href="#rental">Sublets</a>
+                    <a href="post.html">Sublets</a>
                 </div>
                 <div class="listing">
-                    <a href="#rental">Office/Commercial</a>
+                    <a href="post.html">Office/Commercial</a>
                 </div>
             </div>
 
             <div class="category-card">
                 <h3>Jobs</h3>
                 <div class="listing">
-                    <a href="#job">Part-time Web Developer</a>
+                    <a href="post.html">Part-time Web Developer</a>
                 </div>
                 <div class="listing">
-                    <a href="#job">Hairstylist</a>
+                    <a href="post.html">Hairstylist</a>
                 </div>
                 <div class="listing">
-                    <a href="#job">Restaurant Server</a>
+                    <a href="post.html">Restaurant Server</a>
                 </div>
                 <div class="listing">
-                    <a href="#job">Housekeeper</a>
+                    <a href="post.html">Housekeeper</a>
                 </div>
                 <div class="listing">
-                    <a href="#job">Dog Walker</a>
+                    <a href="post.html">Dog Walker</a>
                 </div>
                 <div class="listing">
-                    <a href="#job">Babysitter</a>
+                    <a href="post.html">Babysitter</a>
                 </div>
                 <div class="listing">
-                    <a href="#job">Pet Sitter</a>
+                    <a href="post.html">Pet Sitter</a>
                 </div>
             </div>
 
             <div class="category-card">
                 <h3>For Sale</h3>
                 <div class="listing">
-                    <a href="#sale">Furniture</a>
+                    <a href="post.html">Furniture</a>
                 </div>
                 <div class="listing">
-                    <a href="#sale">Electronics</a>
+                    <a href="post.html">Electronics</a>
                 </div>
                 <div class="listing">
-                    <a href="#sale">Toys</a>
+                    <a href="post.html">Toys</a>
                 </div>
                 <div class="listing">
-                    <a href="#sale">Games</a>
+                    <a href="post.html">Games</a>
                 </div>
                 <div class="listing">
-                    <a href="#sale">Antiques</a>
+                    <a href="post.html">Antiques</a>
                 </div>
                 <div class="listing">
-                    <a href="#sale">Automobiles</a>
+                    <a href="post.html">Automobiles</a>
                 </div>
                 <div class="listing">
-                    <a href="#sale">Books</a>
+                    <a href="post.html">Books</a>
                 </div>
             </div>
 
             <div class="category-card">
                 <h3>Apparel</h3>
                 <div class="listing">
-                    <a href="#apparel">Sweaters</a>
+                    <a href="post.html">Sweaters</a>
                 </div>
                 <div class="listing">
-                    <a href="#apparel">Shoes</a>
+                    <a href="post.html">Shoes</a>
                 </div>
                 <div class="listing">
-                    <a href="#apparel">Pants</a>
+                    <a href="post.html">Pants</a>
                 </div>
                 <div class="listing">
-                    <a href="#apparel">Tops</a>
+                    <a href="post.html">Tops</a>
                 </div>   
                 <div class="listing">
-                    <a href="#apparel">Loungewear</a>
+                    <a href="post.html">Loungewear</a>
                 </div>
                 <div class="listing">
-                    <a href="#apparel">Jewelry</a>
+                    <a href="post.html">Jewelry</a>
                 </div>
                 <div class="listing">
-                    <a href="#apparel">Baby + Children</a>
+                    <a href="post.html">Baby + Children</a>
                 </div>
             </div>
         </div>
@@ -181,22 +180,22 @@
     
                 const safeSwapLocations = [
                     {
-                        name: "Police Station Safe Swap Zone",
-                        address: "123 Main St, Anytown, USA",
-                        lat: 40.7128,
-                        lng: -74.0060
+                        name: "Chapel Hill, NC USPS",
+                        address: "1125 S Estes Dr, Chapel Hill, NC 27514",
+                        lat: 35.9281,
+                        lng: -79.0311
                     },
                     {
-                        name: "Community Center Safe Exchange",
-                        address: "456 Park Ave, Somewhere, USA", 
-                        lat: 34.0522,
-                        lng: -118.2437
+                        name: "Raleigh, NC USPS",
+                        address: "1 Floretta PL RM 88 Raleigh, NC 27676-9803", 
+                        lat: 35.7796,
+                        lng: -78.6382
                     },
                     {
-                        name: "Public Library Safe Meet Point",
-                        address: "789 Oak Rd, Elsewhere, USA",
-                        lat: 41.8781,
-                        lng: -87.6298
+                        name: "Charlotte, NC USPS",
+                        address: "201 N McDowell ST Charlotte, NC 28204-9700",
+                        lat: 35.2271,
+                        lng: -80.8431
                     }
                 ];
     
@@ -218,10 +217,10 @@
                             map.setCenter(results[0].geometry.location);
                             map.setZoom(12);
     
-                            // Clear previous list
+                      
                             locationList.innerHTML = '';
     
-                            // Find and display nearby locations
+                            
                             safeSwapLocations.forEach(location => {
                                 const distance = google.maps.geometry.spherical.computeDistanceBetween(
                                     new google.maps.LatLng(location.lat, location.lng),
@@ -267,5 +266,3 @@
     </footer>
 </body>
 </html>
-< ! --- add example posting and use that for each clickable link 
-make items twirl down menus >
