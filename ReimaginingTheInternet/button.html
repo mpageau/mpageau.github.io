@@ -108,9 +108,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
+.fill-blank{
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -124,6 +125,9 @@ body {
 
 .section {
     margin-bottom: 15px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-left: 30px;
 }
 
 .section label {
@@ -134,7 +138,7 @@ body {
 
 .section span {
             color: #555;
-        }
+}
 
 .contact-info {
     font-size: 1.2rem;
@@ -152,11 +156,6 @@ body {
             }
         }
 
-.fill-blank {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-
 .fill-blank input {
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -164,25 +163,21 @@ body {
     font-size: 1rem;
     width: 200px;
 }
-        
-.submit-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #35cd72;
-    color: #fff;
-    font-size: 1rem;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-        
-.submit-btn:hover {
-    background: #219a52;
-}
-    </style>
-</head>
+    
+body { font-family: Arial, sans-serif; max-width: auto; margin: 0 auto; }
+        .fill-blank input { width: 100%; padding: 8px; margin: 5px 0; }
+        #submit-btn { 
+            background-color: #4CAF50; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            cursor: not-allowed; 
+            align-content: center;
+        }
+        #submit-btn.active { cursor: pointer; }
+        .error { color: red; margin-top: 10px; }
+    
+</style>
 <body>
     <header>
         <h1>Safe-Swap</h1>
@@ -197,43 +192,76 @@ body {
         <a href="safety.html">Safety</a>
         <a href="about.html">About</a>
         <a href="button.html">
-            <button class="post-button">Post Listing</button>
-        </a>    
-        </nav>
-    <header>
-<body>
-    <div class="container">
-        <h1 class="fill-blank" style="color: black;"><span>Post Title:</span> <input type="text" name="name" placeholder="Insert Title"></h1>
-        <br>
-        <div class="section">
-            <label style="color: black;">Description:</label>
-            <p class="fill-blank"> <input type="text" name="Description" placeholder="Insert Detailed Description"></p>
-        </div>
+        <button class="post-button">Post Listing</button>
+       </a>
+    </nav>
+    
+    <form id="listing-form">
+        <h1 class="fill-blank">
+            <span>Post Title:</span> 
+            <input type="text" name="title" placeholder="Insert Title" required>
+        </h1>
 
         <div class="section">
-            <label style="color: black;">Price:</label>
-            <p class="fill-blank"><span>$</span><input type="number" name="price" placeholder="Insert Price"</p>
+            <label>Description:</label>
+            <input type="text" name="description" placeholder="Insert Description" required>
         </div>
 
         <div class="section">
-            <label style="color: black;">Location:</label>
-            <p class="fill-blank"> <input type="text" name="location" placeholder="Insert Location"></p>
+            <label>Price:</label>
+            <input type="number" name="price" placeholder="Insert Price" required>
         </div>
 
         <div class="section">
-            <label style="color: black;">Condition:</label>
-            <p class="fill-blank"> <input type="text" name="condition" placeholder="Insert Condition"></p>
+            <label>Location:</label>
+            <input type="text" name="location" placeholder="Insert Location" required>
         </div>
 
-        <div class="contact-info" style="color: black;">
-           <p class="fill-blank">Contact: <input type="text" name="contact" placeholder="Insert Contact Info"></p> 
+        <div class="section">
+            <label>Condition:</label>
+            <input type="text" name="condition" placeholder="Insert Condition" required>
         </div>
-    </div>
 
-        <div class="submit-btn">
-            SUBMIT
+        <div class="contact-info">
+            <label>Contact:</label>
+            <input type="text" name="contact" placeholder="Insert Contact Info" required>
         </div>
+
+        <button style="align-content: center;" type="submit" id="submit-btn" disabled>Submit</button>
+        <div id="error-msg" class="error"></div>
+    </form>
+
+    <script>
+        const form = document.getElementById('listing-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const inputs = form.querySelectorAll('input[required]');
+
+        function checkInputs() {
+            const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+            
+            submitBtn.disabled = !allFilled;
+            submitBtn.classList.toggle('active', allFilled);
+
+            if (allFilled) {
+                errorMsg.textContent = '';
+            } else {
+                errorMsg.textContent = 'Please fill in all fields.';
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', checkInputs);
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!submitBtn.disabled) {
+                alert('Listing submitted successfully!');
+            }
+        });
+    </script>
 </body>
 </html>
-
 
